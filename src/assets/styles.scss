@@ -1,0 +1,54 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+h1.title {
+  @apply text-gray-700 font-medium text-3xl;
+}
+
+a {
+  @apply text-teal-600 underline;
+
+  &:hover {
+    @apply text-teal-800 no-underline;
+  }
+}
+
+.section {
+  @apply max-w-md mx-auto my-8;
+}
+
+.btn {
+  @apply inline-flex rounded h-12 px-6 items-center justify-center text-white uppercase text-sm tracking-wide font-bold no-underline;
+
+  min-width: 6rem;
+
+  &:hover {
+    @apply text-teal-800 no-underline;
+  }
+
+  &-teal {
+    @apply bg-teal-500;
+  }
+
+  &-loading {
+    background-image: url('/three-dots.svg');
+    background-size: 40px auto;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+}
+
+.form-control {
+    @apply mb-4;
+
+  .form-label {
+    @apply font-medium;
+  }
+
+  .form-input {
+    @apply border-2 border-gray-300 px-3 py-2 rounded w-full;
+  }
+}
