@@ -114,3 +114,63 @@ it('do not hit API endpoint when form data are invalid', () => {
 
   auth.login.mockRestore()
 })
+
+
+// Third round of exercises
+
+it('compressed - redirects on sucessful login', async () => {
+
+  auth.login = jest.fn(() => Promise.resolve())
+
+  const $router = {
+    push: () => {}
+  }
+
+  const spy = jest.spyOn($router, 'push')
+
+  const wrapper = mount(FormLogin, {
+    mocks: {
+      $router
+    }
+  })
+
+  wrapper.setData({
+    form: {
+      email: 'robin@batman.com',
+      password: 'secret'
+    }
+  })
+
+  await wrapper.vm.login()
+
+  expect(spy).toHaveBeenCalledWith({name: 'protected'})
+
+})
+
+it('compressed - redirects on sucessful login', async () => {
+
+  auth.login = jest.fn(() => Promise.resolve())
+
+  const $router = {
+    push: jest.fn()
+  }
+
+  const wrapper = mount(FormLogin, {
+    mocks: {
+      $router
+    }
+  })
+
+  wrapper.setData({
+    form: {
+      email: 'robin@batman.com',
+      password: 'secret'
+    }
+  })
+
+  await wrapper.vm.login()
+
+  expect($router.push).toHaveBeenCalledWith({name: 'protected'})
+
+})
+
