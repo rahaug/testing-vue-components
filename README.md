@@ -1,8 +1,9 @@
 # Testing Vue Components
+This is the companion repository to [Vue School's](https://vueschool.io) [Testing Vue Components workshop](https://vueschool.io/workshops/testing-vue-components).
 
-This repository holds the boilerplate for the exercises of module 2.
-
-Module 2 covers testing Vue.js components with Vue Test Utils.
+The workshop is taught by [Rolf Haug](https://twitter.com/rahaug).
+ 
+For more workshops, please see our extensive list of [JavaScript and Vue.js workshops](https://vueschool.io/workshops).
 
 
 ## Project setup
