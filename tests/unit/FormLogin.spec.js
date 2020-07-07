@@ -1,5 +1,6 @@
 import FormLogin from '../../src/components/FormLogin';
 import {mount} from '@vue/test-utils';
+import {auth} from '../../src/api'
 
 it('sets email from prop', () => {
   const wrapper = mount(FormLogin, {
@@ -71,4 +72,45 @@ it('has a submit button', () => {
 
   const button = wrapper.find('button[type=submit]')
   expect(button.element).toBeDefined()
+})
+
+
+// Second round of exercises
+
+it('shows api errors', async () => {
+  auth.login = jest.fn(() => Promise.reject())
+
+  const wrapper = mount(FormLogin)
+  wrapper.setData({
+    form: {
+      email: 'john@rambo.com',
+      password: 'first_blood'
+    }
+  })
+
+  await wrapper.vm.login()
+
+  expect(wrapper.vm.hasError).toBe(true)
+  expect(wrapper.html()).toContain('Something went wrong. Please try again.')
+
+  auth.login.mockRestore()
+})
+
+it('shows validation error if missing inputs and submitting', async () => {
+  const wrapper = mount(FormLogin)
+
+  await wrapper.vm.login().catch(()=>{})
+
+  expect(wrapper.html()).toContain('Please fill in both fields.')
+})
+
+it('do not hit API endpoint when form data are invalid', () => {
+  auth.login = jest.fn()
+
+  const wrapper = mount(FormLogin)
+   wrapper.vm.login().catch(()=>{})
+
+  expect(auth.login).not.toHaveBeenCalled()
+
+  auth.login.mockRestore()
 })
