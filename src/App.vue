@@ -26,8 +26,8 @@
           { title: 'Home', name: 'home'},
           { title: 'Shopping List', name: 'shopping'},
           { title: 'Login', name: 'login'},
-          { title: 'Messages', name: 'messages'}
-
+          { title: 'Messages', name: 'messages'},
+          { title: 'Notifications', name: 'notifications'}
         ]
       }
     }

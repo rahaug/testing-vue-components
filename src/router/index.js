@@ -6,6 +6,7 @@ const Login = () => import('../views/Login.vue')
 const Protected = () => import('../views/Protected.vue')
 const Messages = () => import('../views/Messages.vue')
 const Shopping = () => import('../views/Shopping.vue')
+const Notification = () => import('../views/Notification.vue')
 
 Vue.use(VueRouter)
 
@@ -36,6 +37,11 @@ export const routes = [
     path: '/messages',
     name: 'messages',
     component: Messages
+  },
+  {
+    path: '/notifications',
+    name: 'notifications',
+    component: Notification
   }
 ]
 
